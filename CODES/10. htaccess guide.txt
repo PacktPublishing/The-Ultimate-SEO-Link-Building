@@ -1,0 +1,16 @@
+For redirecting a non-www URL to a www URL:
+
+Options +FollowSymLinks
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^domain.com$ [NC]
+RewriteRule ^(.*)$ http://www.example.com/$1
+[R=301,L]
+
+For redirecting a www URL to a non-www URL:
+
+Options +FollowSymLinks
+RewriteEngine on RewriteCond %{HTTP_HOST} .
+RewriteCond %{HTTP_HOST} !^example.com
+RewriteRule (.*) http://example.com/$1
+[R=301,L]
+
